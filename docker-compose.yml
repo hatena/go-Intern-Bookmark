@@ -1,0 +1,42 @@
+version: "3.6"
+services:
+  app:
+    build: .
+    image: go-intern-bookmark
+    volumes:
+      - .:/go/src/github.com/hatena/go-Intern-Bookmark
+    links:
+      - db
+    ports:
+      - "8000:8000"
+    environment:
+      PORT: 8000
+      DATABASE_DSN: root@(db:3306)/intern_bookmark
+      DATABASE_DSN_TEST: root@(db:3306)/intern_bookmark_test
+    tty: true
+    stdin_open: true
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./db/docker:/docker-entrypoint-initdb.d
+      - .:/app
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=1
+  node:
+    build:
+      context: .
+      target: node
+    working_dir: /app
+    command: ["yarn", "watch"]
+    volumes:
+      - ./ui:/app/ui
+      - ./package.json:/app/package.json
+      - ./yarn.lock:/app/yarn.lock
+      - ./static:/app/static/
+      - yarn-cache:/usr/local/share/.cache/yarn/v1
+      - node_modules:/app/node_modules
+volumes:
+  yarn-cache:
+  node_modules:

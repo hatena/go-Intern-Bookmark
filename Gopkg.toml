@@ -1,0 +1,25 @@
+required = ["github.com/jessevdk/go-assets"]
+
+[[constraint]]
+  name = "github.com/go-sql-driver/mysql"
+  revision = "64db0f7ebe171b596aa9b26f39a79f7413a3b617"
+
+[[constraint]]
+  name = "github.com/dimfeld/httptreemux"
+  revision = "7f532489e7739b3d49df5c602bf63549881fe753"
+
+[[constraint]]
+  name = "github.com/justinas/nosurf"
+  revision = "7182011986c42c33f0a79fd4b07e41edc784532b"
+
+[[constraint]]
+  name = "github.com/graph-gophers/graphql-go"
+  revision = "e698b6abc17ead17ea89d3d22a4b2625299701e3"
+
+[[constraint]]
+  name = "golang.org/x/crypto"
+  branch = "master"
+
+[[constraint]]
+  name = "github.com/jessevdk/go-assets"
+  revision = "4f4301a06e153ff90e17793577ab6bf79f8dc5c5"

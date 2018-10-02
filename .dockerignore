@@ -1,0 +1,6 @@
+/build
+/vendor
+*-gen.go
+
+/node_modules
+/static

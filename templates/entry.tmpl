@@ -1,0 +1,23 @@
+{{define "title"}}{{.Entry.Title}}のブックマーク{{end}}
+
+{{define "body"}}
+<h1>{{.Entry.Title}}のブックマーク</h1>
+
+{{if .User}}
+  ユーザー名: {{.User.Name}}
+  <form action="/signout" method="POST">
+    <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+    <input type="submit" value="ログアウト"/>
+  </form>
+{{else}}
+  <a href="/signup">ユーザー登録</a>
+  <a href="/signin">ログイン</a>
+{{end}}
+
+{{range .Bookmarks}}
+<div>
+  {{.User.Name}}: {{.Bookmark.Comment}}
+</div>
+{{end}}
+
+{{end}}

@@ -1,0 +1,12 @@
+{{define "title"}}ログイン{{end}}
+
+{{define "body"}}
+<h1>ログイン</h1>
+
+<form action="/signin" method="POST">
+  <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+  <div>名前: <input type="TEXT" name="name" /></div>
+  <div>パスワード: <input type="TEXT" name="password" /></div>
+  <input type="submit" value="ログイン"/>
+</form>
+{{end}}

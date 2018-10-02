@@ -1,0 +1,28 @@
+{{define "title"}}マイブックマーク{{end}}
+
+{{define "body"}}
+<h1>{{.User.Name}}のマイブックマーク</h1>
+
+ユーザー名: {{.User.Name}}
+<form action="/signout" method="POST">
+  <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+  <input type="submit" value="ログアウト"/>
+</form>
+
+<div>
+  <a href="/bookmarks/add">ブックマークを追加</a>
+</div>
+
+{{range .Bookmarks}}
+<div>
+  <a href="/entries/{{.Entry.ID}}">{{.Entry.Title}}</a>
+  <a href="{{.Entry.URL}}" target="_about" rel="nofollow noopener">{{.Entry.URL}}</a>
+  {{.Bookmark.Comment}}
+  <form action="/bookmarks/{{.Bookmark.ID}}/delete" method="POST">
+    <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+    <input type="submit" value="削除"/>
+  </form>
+</div>
+{{end}}
+
+{{end}}

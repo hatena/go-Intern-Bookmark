@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+reflex -r '\.(go|tmpl)$' -R '^vendor' -R '-gen.go$' -R '^node_modules' -s -d none -- \
+    sh -c 'make run'

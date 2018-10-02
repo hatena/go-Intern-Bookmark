@@ -1,0 +1,37 @@
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Query {
+    visitor(): User!
+    getUser(userId: ID!): User!
+    getBookmark(bookmarkId: ID!): Bookmark!
+    getEntry(entryId: ID!): Entry!
+    listEntries(): [Entry!]!
+}
+
+type Mutation {
+    createBookmark(url: String!, comment: String!): Bookmark!
+    deleteBookmark(bookmarkId: ID!): Boolean!
+}
+
+type User {
+    id: ID!
+    name: String!
+    bookmarks: [Bookmark!]!
+}
+
+type Entry {
+    id: ID!
+    url: String!
+    title: String!
+    bookmarks: [Bookmark!]!
+}
+
+type Bookmark {
+    id: ID!
+    comment: String!
+    user: User!
+    entry: Entry!
+}

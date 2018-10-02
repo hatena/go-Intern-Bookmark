@@ -1,0 +1,19 @@
+{{define "title"}}ブックマーク追加{{end}}
+
+{{define "body"}}
+<h1>ブックマーク追加</h1>
+
+ユーザー名: {{.User.Name}}
+<form action="/signout" method="POST">
+  <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+  <input type="submit" value="ログアウト"/>
+</form>
+
+<form action="/bookmarks/add" method="POST">
+  <input type="hidden" name="csrf_token" value="{{$.CSRFToken}}">
+  <div>URL: <input type="TEXT" name="url" placeholder="https://example.com"/></div>
+  <div>コメント: <input type="TEXT" name="comment" placeholder="(任意)"/></div>
+  <input type="submit" value="ブックマーク追加"/>
+</form>
+
+{{end}}
