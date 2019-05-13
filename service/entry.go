@@ -1,8 +1,6 @@
 package service
 
 import (
-	"errors"
-
 	"github.com/hatena/go-Intern-Bookmark/model"
 )
 
@@ -22,9 +20,6 @@ func (app *bookmarkApp) FindOrCreateEntry(url string) (*model.Entry, error) {
 }
 
 func (app *bookmarkApp) ListEntries(page uint64, limit uint64) ([]*model.Entry, error) {
-	if page < 1 || limit < 1 {
-		return nil, errors.New("page and limit should be positive")
-	}
 	return app.repo.ListEntries((page-1)*limit, limit)
 }
 

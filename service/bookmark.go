@@ -37,9 +37,6 @@ func (app *bookmarkApp) ListBookmarksByIDs(bookmarkIDs []uint64) ([]*model.Bookm
 }
 
 func (app *bookmarkApp) ListBookmarksByUserID(userID uint64, page uint64, limit uint64) ([]*model.Bookmark, error) {
-	if page < 1 || limit < 1 {
-		return nil, errors.New("page and limit should be positive")
-	}
 	return app.repo.ListBookmarksByUserID(userID, (page-1)*limit, limit)
 }
 
@@ -48,9 +45,6 @@ func (app *bookmarkApp) ListBookmarksByUserIDs(userIDs []uint64) (map[uint64][]*
 }
 
 func (app *bookmarkApp) ListBookmarksByEntryID(entryID uint64, page uint64, limit uint64) ([]*model.Bookmark, error) {
-	if page < 1 || limit < 1 {
-		return nil, errors.New("page and limit should be positive")
-	}
 	return app.repo.ListBookmarksByEntryID(entryID, (page-1)*limit, limit)
 }
 
